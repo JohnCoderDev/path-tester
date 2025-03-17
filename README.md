@@ -25,5 +25,5 @@ end.
 ```
 
 ## Running the Tests
-- requires the (abl-tester)[https://github.com/JohnCoderDev/abl-tester] to be in your propath.
-- open the file `run-tests.p` in your procedure editor and execute it.
+- requires the [abl-tester](https://github.com/JohnCoderDev/abl-tester) to be in your propath.
+- open the file [run-tests](/run-tests.p) in your procedure editor and execute it.
