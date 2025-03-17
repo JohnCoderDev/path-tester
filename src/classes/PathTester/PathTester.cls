@@ -5,6 +5,8 @@ class classes.PathTester.PathTester:
     define public property currentPath as character get. private set.
     define public property currentFullPath as character get. private set.
     define public property pathPermissions as character get. private set.
+    define public property lastWriteDate as date get. private set.
+    define public property lastWriteTime as int64 get. private set.
     
     method public PathTester setPath(pPath as character):
         define variable previousPath as character no-undo.
@@ -14,6 +16,8 @@ class classes.PathTester.PathTester:
             file-info:file-name = currentPath
             currentFullPath = file-info:full-pathname
             pathPermissions = file-info:file-type
+            lastWriteDate = file-info:file-mod-date
+            lastWriteTime = file-info:file-mod-time
             file-info:file-name = previousPath.
     end method.
     
@@ -35,6 +39,10 @@ class classes.PathTester.PathTester:
     
     method public logical canWrite():
         return pathPermissions matches "*w*".
+    end method.
+    
+    method public datetime getLastWriteDateTime():
+        return datetime(string(lastWriteDate) + " " + string(lastWriteTime, "HH:MM:SS")).
     end method.
     
     method public character getFullPath():
